@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        const library = [
+    {
+        title: "Where'd You Go, Bernadette",
+        author: "Maria Semple",
+        isbn: "978-0316204262",
+        checkedOut: false
+    },
+    {
+        title: "Normal People",
+        author: "Sally Rooney",
+        isbn: "978-1984822178",
+        checkedOut: false
+    },
+    {
+        title: "The Dutch House",
+        author: "Sally Rooney",
+        isbn: "978-0062963673",
+        checkedOut: false
+    },
+    {
+        title: "The Water Dancer",
+        author: "Ta-Nehisi Coates",
+        isbn: "978-0399590597",
+        checkedOut: false
+    }
+        ];
+        // Function to create a book object
+        function createBook(title, author, isbn) {
+            return {
+                title,
+                author,
+                isbn,
+                checkedOut: false
+            };
+        }
+        const book5 = createBook("Circe", "Madeline Miller", "978-0316556347");
+        const book6 = createBook("The Tattooist of Auschwitz", "Heather Morris", "978-0062797155");
+
+        // Function to add a book to the library
+        function addBookToLibrary(book) {
+            library.push(book);
+        }
+        addBookToLibrary(book5);
+        addBookToLibrary(book6);
+        
+        console.log(library);
+
+        // Function to checkout a book
+        function checkoutBook(isbn) {
+            const book = library.find(book => book.isbn === isbn);
+            if (book) {
+                book.checkedOut = true;
+                console.log(`Book "${book.title}" has been checked out.`);
+            } else {
+                console.log("Book not found.");
+            }
+        }
+        checkoutBook("978-0316204262"); //Book "Where'd You Go, Bernadette" has been checked out.
+        checkoutBook("888-0316204262"); //Book not found.
+
+        // Function to return a book
+        function returnBook(isbn) {
+            const book = library.find(book => book.isbn === isbn);
+            if (book) {
+                book.checkedOut = false;
+                console.log(`Book "${book.title}" has been returned.`);
+            } else {
+                console.log("Book not found.");
+            }
+        }
+        returnBook("978-0316204262");
+
+        // Function to find books by a specific author
+        function findBooksByAuthor(author) {
+            return library.filter(book => book.author === author);
+        }
+
+        const booksByAuthor = findBooksByAuthor("Sally Rooney");
+        console.log("Books by Sally Rooney:", booksByAuthor);
+    </script>
+</body>
+
+</html>
