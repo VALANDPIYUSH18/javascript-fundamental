@@ -8,7 +8,7 @@ function sum(a, b){    // function keyword is used to declare functions then its
     return a + b;   // returning a value
 }
 
-// calling a functionṅ
+// calling a function
 let ans = sum(1,2);  // here 1 and 2 are arguments
 
 let x = 0;  // a global variable beacuse it is declared outside of any functions
